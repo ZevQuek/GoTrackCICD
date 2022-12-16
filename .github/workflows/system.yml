@@ -18,7 +18,7 @@ jobs:
     - name: Go installed
       run: |
         go version
-        go test -v
+        go test -v calc/*
     - if: ${{ failure()}}
       uses: dacbd/create-issue-action@main
       with:
