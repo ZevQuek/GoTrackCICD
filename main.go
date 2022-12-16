@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/ZevQuek/GoTrackCICD/calc"
+	"Activity/calc"
 	"fmt"
 )
 
