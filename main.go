@@ -1,7 +1,7 @@
 package main
 
 import (
-	"calc"
+	"github.com/ZevQuek/GoTrackCICD/calc"
 	"fmt"
 )
 
