@@ -15,10 +15,15 @@ jobs:
       with:
         # The Go version to download (if necessary) and use. Supports semver spec and ranges.
         go-version: 1.19.3 # optional
-    - name: Go installed
+        
+    - name: Install dependencies for GO
       run: |
-        go version
-        go test -v calc/*
+        go get github.com/franela/goblin 
+        go install gotest.tools/gotestsum@latest
+        go test -v
+        go test -v | gotestsum --junitfile report.xml
+        ls 
+        
     - if: ${{ failure()}}
       uses: dacbd/create-issue-action@main
       with:
@@ -32,3 +37,14 @@ jobs:
           Job -           `${{ github.job }}`
           status -        `${{ job.status }}`
         assignees: ZevQuek
+    - uses: yanzay/notify-telegram@v0.1.0
+      with:
+        chat: ${{ secrets.chat }} # user id or channel name secret
+        token: ${{ secrets.token }} # token secret
+        status: ${{ job.status }} # do not modify this line
+
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action/composite@v2
+      if: always()
+      with:
+        junit_files: "report.xml" 
