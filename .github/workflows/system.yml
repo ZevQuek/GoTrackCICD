@@ -1,1 +1,21 @@
-
+name : Demo Virtual Machine
+on:
+  push:
+    branches: [main]
+    
+jobs:
+  build:
+    name: Virtual Machine
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout my codes
+      uses: actions/checkout@v2
+    - name: Setup Go environment
+      uses: actions/setup-go@v3.5.0
+      with:
+        # The Go version to download (if necessary) and use. Supports semver spec and ranges.
+        go-version: 1.19.3 # optional
+    - name: Go installed
+      run: |
+        go version
+        #go test -v
