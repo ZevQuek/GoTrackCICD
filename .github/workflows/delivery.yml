@@ -42,3 +42,9 @@ jobs:
         args: release
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Send email
+      uses: cinotify/github-action@main
+      with:
+        to: 'chekwee.quek@foodpanda.com'
+        subject: 'New version released'
+        body: 'This is a notification from GitHub actions. (https://github.com/${{ github.repository }}/tree/${{ github.sha }})'
