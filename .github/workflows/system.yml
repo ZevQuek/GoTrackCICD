@@ -39,8 +39,7 @@ jobs:
         assignees: ZevQuek
   
     - if: ${{ failure()}}
-    - name: Telegram notification
-    - uses: yanzay/notify-telegram@v0.1.0
+      uses: yanzay/notify-telegram@v0.1.0
       with:
         chat: ${{ secrets.chat }} # user id or channel name secret
         token: ${{ secrets.tgtoken }} # token secret
