@@ -37,7 +37,10 @@ jobs:
           Job -           `${{ github.job }}`
           status -        `${{ job.status }}`
         assignees: ZevQuek
-    - uses: yanzay/notify-telegram@v0.1.0
+  
+    - if: ${{ failure()}}
+    - name: Telegram notification
+      uses: yanzay/notify-telegram@v0.1.0
       with:
         chat: ${{ secrets.chat }} # user id or channel name secret
         token: ${{ secrets.tgtoken }} # token secret
