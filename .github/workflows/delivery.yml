@@ -47,4 +47,4 @@ jobs:
       with:
         to: 'chekwee.quek@foodpanda.com'
         subject: 'New version released'
-        body: 'This is a notification from GitHub actions. (https://github.com/${{ github.repository }}/tree/${{ github.sha }})'
+        body: 'This is a notification from GitHub actions. 
